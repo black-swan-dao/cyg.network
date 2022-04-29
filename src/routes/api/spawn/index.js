@@ -1,7 +1,7 @@
 import { createNewInstance, updateInstance } from './_sanity.js';
 import { deployToNetlify } from './_netlify.js';
 import { createAuth0App } from './_auth0.js';
-import { addRecord } from './_goDaddy.js';
+import { addRecord } from './_godaddy.js';
 
 export const post = async (event) => {
     const body = await event.request.json()
