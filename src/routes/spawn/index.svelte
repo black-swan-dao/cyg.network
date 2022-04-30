@@ -69,13 +69,34 @@
 {#if loading}
   LOADING......
 {:else if done}
-  <div><strong>Instance created</strong></div>
-  <div>{result.title}</div>
-  <div>{result.subdomain}.cyg.network</div>
-  <div>{result._id}.netlify.app</div>
-  <div>discordGuildId: {result.discordGuildId}</div>
-  <div>auth0ClientId: {result.auth0ClientId}</div>
-  <div>netlifySitetId: {result.netlifySitetId}</div>
+  <div class="result-section">
+    Your Cygnet instance <strong>{result.title}</strong> has been successfully created.
+  </div>
+  <div class="result-section">
+    In a few minutes it will be accessible at this address: <a
+      href={"https://" + result._id + ".netlify.app"}
+      target="_blank">{result._id}.netlify.app</a
+    >
+  </div>
+  <div class="result-section">
+    Within half an hour it will be accessible at this address: <a
+      href={"https://" + result.subdomain + ".cyg.network"}
+      target="_blank">{result.subdomain}.cyg.network</a
+    >
+  </div>
+  <div class="result-section">
+    Log in as a user with the <strong>cygnet-admin</strong> role assigned in the
+    discord channel and go to
+    <a
+      href={"https://" + result.subdomain + ".cyg.network/admin"}
+      target="_blank">{result.subdomain}.cyg.network/admin</a
+    > to create a new voting cycle and customize the instance.
+  </div>
+  <div class="details">
+    <div>discordGuildId: {result.discordGuildId}</div>
+    <div>auth0ClientId: {result.auth0ClientId}</div>
+    <div>netlifySitetId: {result.netlifySiteId}</div>
+  </div>
 {:else}
   <div class="spawn">
     <div class="form-section">
@@ -139,5 +160,17 @@
         margin-bottom: 0.5rem;
       }
     }
+  }
+
+  .details {
+    margin-top: 20px;
+    font-size: 10px;
+    font-family: "Courier New", Courier, monospace;
+    padding: 10px;
+    background: lightgray;
+  }
+
+  .result-section {
+    margin-bottom: 20px;
   }
 </style>
