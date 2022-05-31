@@ -1,5 +1,7 @@
 // TYPOGRAPHY
 $SERIF_STACK: 'Literata', serif;
+$DISPLAY_STACK: "AstoriaRoman", serif;
+$sans-stack: Helvetica, Arial, sans-serif;
 
 $SCALE_FACTOR: 1;
 $font-size-extra-small: 12px * $SCALE_FACTOR;
@@ -10,12 +12,11 @@ $font-size-h2: 32px * $SCALE_FACTOR;
 $font-size-h1: 54px * $SCALE_FACTOR;
 
 // COLORS
-$e-ink-light: #f5f4ee;
-$e-ink-medium: #dedcd5;
-$e-ink-almost-dark: #070101;
-$e-ink-dark: #221f20;
-
-$border-style: 1px solid $e-ink-dark;
+$black: rgba(0, 0, 0, 1);
+$white: rgba(254, 254, 254, 1);
+$pale-white: rgba(255,255,255,0.4);
+$mid-white: rgba(255,255,255,0.8);
+$gold: rgb(250, 210, 81);
 
 $FONT_SIZE_SMALL: 12px;
 $FONT_SIZE_BASE: 18px;

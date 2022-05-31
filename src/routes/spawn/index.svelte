@@ -54,17 +54,11 @@
   }
 </script>
 
-<h1>SPAWN CYGNET</h1>
-
-<hr />
-
 {#if has(page, "introduction.content")}
-  <div class="spawnIntroduction">
+  <div class="spawn-introduction">
     {@html renderBlockText(page.spawnIntroduction.content)}
   </div>
 {/if}
-
-<hr />
 
 {#if loading}
   LOADING......
@@ -121,13 +115,13 @@
     </div>
     <div class="form-section">
       <div class="sub-section">
-        <label for="name">Add bot to discord guild...</label><br />
         <div>
           <a
             href="https://discord.com/oauth2/authorize?client_id=969536726794125332&permissions=268435456&redirect_uri=https%3A%2F%2Fcyg-network.eu.auth0.com%2Flogin%2Fcallback&scope=bot"
             target="_blank"
+            class="bot"
           >
-            HERE
+            Add bot to discord guild
           </a>
         </div>
       </div>
@@ -157,7 +151,7 @@
       margin-bottom: 1rem;
 
       .sub-section {
-        margin-bottom: 0.5rem;
+        margin-bottom: 20px;
       }
     }
   }
@@ -172,5 +166,73 @@
 
   .result-section {
     margin-bottom: 20px;
+  }
+
+  h1,
+  .spawn-introduction,
+  .result-section,
+  .spawn {
+    background: $pale-white;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    background: $mid-white;
+    border-radius: 4px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    min-width: 40ch;
+  }
+
+  .bot {
+    border: none;
+    outline: none;
+    display: inline-block;
+    // margin-bottom: 40px;
+    // margin-top: 40px;
+    min-width: 40ch;
+    padding: 20px;
+    background: $pale-white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid $gold;
+    color: $black;
+    transition: background 0.4s $transition;
+    font-family: $DISPLAY_STACK;
+    cursor: pointer;
+
+    &:hover {
+      background: $mid-white;
+    }
+  }
+
+  input[type="submit"] {
+    border: none;
+    outline: none;
+    display: inline-block;
+    // margin-bottom: 40px;
+    // margin-top: 40px;
+    width: 100%;
+    padding: 40px;
+    background: $pale-white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+    border: 1px solid $gold;
+    color: $black;
+    font-size: 32px;
+    transition: background 0.4s $transition;
+    font-family: $DISPLAY_STACK;
+    cursor: pointer;
+
+    &:hover {
+      background: $mid-white;
+    }
   }
 </style>

@@ -4,9 +4,7 @@
   export let page
 </script>
 
-<h1>CYGNET</h1>
-
-<hr />
+<h1>Cygnet</h1>
 
 {#if has(page, "introduction.content")}
   <div class="introduction">
@@ -14,11 +12,7 @@
   </div>
 {/if}
 
-<hr />
-
-<p><a href="/spawn" sveltekit:prefetch>Spawn</a></p>
-
-<hr />
+<a href="/spawn" sveltekit:prefetch class="spawn">Spawn</a>
 
 {#if has(page, "faq")}
   <div class="faq">
@@ -31,17 +25,52 @@
   </div>
 {/if}
 
-<hr />
-
 {#if has(page, "contact.content")}
   <div class="contact">
     {@html renderBlockText(page.contact.content)}
   </div>
-  <hr />
 {/if}
 
 <style lang="scss">
   @import "src/lib/style/variables.scss";
+
+  h1 {
+    background: $pale-white;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .introduction,
+  .faq,
+  .contact {
+    background: $pale-white;
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+  }
+
+  .spawn {
+    display: inline-block;
+    // margin-bottom: 40px;
+    // margin-top: 40px;
+    width: 100%;
+    padding: 40px;
+    background: $pale-white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+    border: 1px solid $gold;
+    color: $black;
+    font-size: 32px;
+    transition: background 0.4s $transition;
+
+    &:hover {
+      background: $mid-white;
+    }
+  }
 
   .faq {
     .item {
