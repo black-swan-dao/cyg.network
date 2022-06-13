@@ -83,4 +83,10 @@
       object-fit: cover;
     }
   }
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 </style>
