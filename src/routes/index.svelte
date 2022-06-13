@@ -60,10 +60,10 @@
     padding: 5px;
     backdrop-filter: blur(10px);
     margin-bottom: 30px;
-    border: 30px solid;
+    border: 30px solid rgba(255, 255, 255, 0);
     border-radius: 5px;
     border-image-slice: 76;
-    border-image-source: url(image/box3.png);
+    border-image-source: url(/image/box3.png);
     border-image-outset: 5px;
 
     p {
