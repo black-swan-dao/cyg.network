@@ -1,8 +1,8 @@
 <script>
-  import Menubar from "$lib/components/menubar.svelte"
+  // import Menubar from "$lib/components/menubar.svelte"
 </script>
 
-<Menubar />
+<!-- <Menubar /> -->
 
 <!-- FOREGROUND IMAGE-->
 <div class="foreground-dust-container">
