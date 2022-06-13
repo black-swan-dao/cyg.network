@@ -31,6 +31,7 @@
     font-family: $DISPLAY_STACK;
     text-rendering: geometricPrecision;
     font-size: 18px;
+    background: black;
   }
 
   main {
