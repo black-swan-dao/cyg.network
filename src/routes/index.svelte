@@ -104,6 +104,7 @@
     // border: 30px solid rgba(255, 255, 255, 0);
     // border-radius: 5px;
     // border-image-slice: 76;
+    // border-image-slice: 36;
     // border-image-source: url(/image/box3.png);
     // border-image-outset: 5px;
 
@@ -115,7 +116,7 @@
 
   .faq {
     .item {
-      margin-bottom: 2em;
+      margin-bottom: 1em;
 
       .question {
         // font-weight: bold;
