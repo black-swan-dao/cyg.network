@@ -1,21 +1,17 @@
 <script>
-  // import Menubar from "$lib/components/menubar.svelte"
+  import Footer from "$lib/components/footer.svelte"
+  import { fade } from "svelte/transition"
 </script>
-
-<!-- <Menubar /> -->
 
 <!-- FOREGROUND IMAGE-->
 <div class="foreground-dust-container">
   <img src="/image/dust.png" />
 </div>
-<!-- BACKGROUND VIDEO -->
-<div class="background-video-container">
-  <video loop autoplay muted src="/video/background.mp4" />
-</div>
 
-<main>
+<main in:fade={{ duration: 200, delay: 200 }}>
   <div class="inner">
     <slot />
+    <Footer />
   </div>
 </main>
 
@@ -28,16 +24,13 @@
 
   body,
   html {
-    font-family: $DISPLAY_STACK;
+    font-family: $FONT_STACK;
     text-rendering: geometricPrecision;
-    font-size: 18px;
-    background: black;
+    font-size: 16px;
+    background: $background-color;
   }
 
   main {
-    padding-top: 20px;
-    padding-bottom: 40px;
-
     z-index: 10;
     position: fixed;
     top: 0;
@@ -47,25 +40,11 @@
     overflow-y: auto;
 
     .inner {
-      width: 800px;
+      width: 600px;
       max-width: 95vw;
       margin-left: auto;
       margin-right: auto;
-    }
-  }
-
-  .background-video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
+      padding-top: 20px;
     }
   }
 

@@ -203,7 +203,7 @@
     border: 1px solid $gold;
     color: $black;
     transition: background 0.4s $transition;
-    font-family: $DISPLAY_STACK;
+    font-family: $FONT_STACK;
     cursor: pointer;
 
     &:hover {
@@ -228,7 +228,7 @@
     color: $black;
     font-size: 32px;
     transition: background 0.4s $transition;
-    font-family: $DISPLAY_STACK;
+    font-family: $FONT_STACK;
     cursor: pointer;
 
     &:hover {

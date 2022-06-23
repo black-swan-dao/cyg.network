@@ -1,4 +1,5 @@
 // TYPOGRAPHY
+$FONT_STACK: "Space Mono", monospace;
 $SERIF_STACK: 'Literata', serif;
 $DISPLAY_STACK: "AstoriaRoman", serif;
 $sans-stack: Helvetica, Arial, sans-serif;
@@ -12,6 +13,9 @@ $font-size-h2: 32px * $SCALE_FACTOR;
 $font-size-h1: 54px * $SCALE_FACTOR;
 
 // COLORS
+$background-color: #e6e6e6;
+$foreground-color: #333333;
+$accent-color: #ff3c00;
 $black: rgba(0, 0, 0, 1);
 $white: rgba(254, 254, 254, 1);
 $pale-white: rgba(255,255,255,0.4);
@@ -108,7 +112,7 @@ $breakpoints: (
 @mixin text {
   .text{
   padding: $SPACE_M $SPACE_M 0 $SPACE_M;
-  font-family: $SERIF_STACK;
+  font-family: $FONT_STACK;
   font-size: $FONT_SIZE_BASE;
   font-weight: 400;
   line-height: 1.4em;

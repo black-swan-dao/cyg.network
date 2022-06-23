@@ -22,9 +22,11 @@
 {/if}
 
 <!-- <a href="/spawn" sveltekit:prefetch class="spawn">Spawn</a> -->
-<a href={page.requestFormUrl} target="_blank" class="request-access">
-  {page.requestFormText}
-</a>
+<div class="action">
+  <a href={page.requestFormUrl} target="_blank" class="request-access">
+    {page.requestFormText}
+  </a>
+</div>
 
 {#if has(page, "faq")}
   <div class="faq">
@@ -34,12 +36,6 @@
         <div class="answer">{item.answer}</div>
       </div>
     {/each}
-  </div>
-{/if}
-
-{#if has(page, "contact.content")}
-  <div class="contact">
-    {@html renderBlockText(page.contact.content)}
   </div>
 {/if}
 
@@ -53,30 +49,24 @@
     backdrop-filter: blur(10px);
   }
 
-  .introduction,
-  .faq,
-  .contact {
-    background: $pale-white;
-    padding: 5px;
-    backdrop-filter: blur(10px);
-    margin-bottom: 30px;
-    border: 30px solid rgba(255, 255, 255, 0);
-    border-radius: 5px;
-    border-image-slice: 76;
-    border-image-source: url(/image/box3.png);
-    border-image-outset: 5px;
+  .introduction {
+    text-align: center;
+    margin-bottom: 50px;
+  }
 
-    p {
-      &:first-child {
-        margin-top: 0;
-      }
-    }
+  .faq {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .action {
+    text-align: center;
+    margin-bottom: 50px;
   }
 
   .spawn {
     display: inline-block;
-    // margin-bottom: 40px;
-    // margin-top: 40px;
+
     width: 100%;
     padding: 40px;
     background: $pale-white;
@@ -89,6 +79,12 @@
     font-size: 32px;
     transition: background 0.4s $transition;
 
+    // border: 30px solid rgba(255, 255, 255, 0);
+    // border-radius: 5px;
+    // border-image-slice: 76;
+    // border-image-source: url(/image/box3.png);
+    // border-image-outset: 5px;
+
     &:hover {
       background: $mid-white;
     }
@@ -96,31 +92,33 @@
 
   .request-access {
     display: inline-block;
-    // margin-bottom: 40px;
-    // margin-top: 40px;
-    width: 100%;
-    padding: 40px;
-    background: $pale-white;
-    border-radius: 5px;
+    padding: 20px 40px;
     text-align: center;
     text-decoration: none;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: $black;
-    font-size: 32px;
-    transition: background 0.4s $transition;
+    border: 1px solid $accent-color;
+    color: $accent-color;
+    transition: background 0.3s $transition;
+    text-transform: uppercase;
+    user-select: none;
+
+    // border: 30px solid rgba(255, 255, 255, 0);
+    // border-radius: 5px;
+    // border-image-slice: 76;
+    // border-image-source: url(/image/box3.png);
+    // border-image-outset: 5px;
 
     &:hover {
-      background: $mid-white;
+      background: $accent-color;
+      color: $background-color;
     }
   }
 
   .faq {
     .item {
-      margin-bottom: 1rem;
+      margin-bottom: 2em;
 
       .question {
-        font-weight: bold;
+        // font-weight: bold;
       }
     }
   }
@@ -130,9 +128,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
 
     img {
+      width: 200px;
       max-width: 100%;
       max-height: 100%;
       max-height: 50vh;
