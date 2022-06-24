@@ -9,13 +9,11 @@
   <div class="header-image">
     <a href="/" sveltekit:prefetch>
       <img
-        src={urlFor(page.headerImage.asset).quality(90).width(800).url()}
+        src={urlFor(page.headerImage.asset).quality(90).width(400).url()}
         alt="Cygnet"
       />
     </a>
   </div>
-{:else}
-  <h1>Cygnet</h1>
 {/if}
 
 {#if has(page, "faq")}

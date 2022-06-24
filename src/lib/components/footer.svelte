@@ -47,6 +47,17 @@
       flex-direction: column;
     }
 
+    .item {
+      margin-right: 13px;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     .left {
       display: flex;
       @include screen-size("small") {
@@ -56,19 +67,12 @@
 
     .right {
       display: flex;
+
+      .item {
+        margin-right: 0;
+      }
       @include screen-size("small") {
         flex-direction: column;
-      }
-    }
-
-    .item {
-      margin-right: 10px;
-      display: block;
-      color: inherit;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }

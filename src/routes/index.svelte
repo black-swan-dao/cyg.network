@@ -7,7 +7,7 @@
 {#if has(page, "headerImage.asset")}
   <div class="header-image">
     <img
-      src={urlFor(page.headerImage.asset).quality(90).width(800).url()}
+      src={urlFor(page.headerImage.asset).quality(90).width(400).url()}
       alt="Cygnet"
     />
   </div>
