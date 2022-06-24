@@ -219,7 +219,7 @@
 
   .details {
     margin-top: 20px;
-    font-size: 10px;
+    font-size: 8px;
     font-family: "Courier New", Courier, monospace;
     padding: 10px;
   }
@@ -259,7 +259,7 @@
 
     &:hover {
       background: $accent-color;
-      color: $background-color;
+      color: $background-color !important;
     }
   }
 
