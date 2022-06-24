@@ -1,5 +1,6 @@
 <script>
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
+  import Ticker from "$lib/components/ticker.svelte"
   import has from "lodash/has.js"
   import slugify from "slugify"
 
@@ -71,29 +72,29 @@
     loading = true
 
     // Call api
-    // try {
-    //   // Prepare message body
-    //   const rawBody = JSON.stringify({
-    //     title: title,
-    //     subdomain: subdomain,
-    //     guildId: guildId,
-    //   })
-    //   // Set message options
-    //   const requestOptions = {
-    //     method: "POST",
-    //     body: rawBody,
-    //     redirect: "follow",
-    //   }
-    //   // Send message
-    //   const response = await fetch("/api/spawn", requestOptions)
-    //   const responseData = await response.json()
-    //   console.log(responseData)
-    //   result = responseData
-    //   loading = false
-    //   done = true
-    // } catch (e) {
-    //   console.log(e.message)
-    // }
+    try {
+      // Prepare message body
+      const rawBody = JSON.stringify({
+        title: title,
+        subdomain: subdomain,
+        guildId: guildId,
+      })
+      // Set message options
+      const requestOptions = {
+        method: "POST",
+        body: rawBody,
+        redirect: "follow",
+      }
+      // Send message
+      const response = await fetch("/api/spawn", requestOptions)
+      const responseData = await response.json()
+      console.log(responseData)
+      result = responseData
+      loading = false
+      done = true
+    } catch (e) {
+      console.log(e.message)
+    }
   }
 </script>
 
@@ -115,30 +116,35 @@
 {/if}
 
 {#if loading}
-  SPAWNING CYGNET INSTANCE......
+  <div class="loading">
+    SPAWNING<Ticker />
+  </div>
 {:else if done}
-  <div class="result-section">
-    Your Cygnet instance <strong>{result.title}</strong> has been successfully created.
-  </div>
-  <div class="result-section">
-    Within half an hour it will be accessible at this address: <a
-      href={"https://" + result.subdomain + ".cyg.network"}
-      target="_blank">{result.subdomain}.cyg.network</a
-    >
-  </div>
-  <div class="result-section">
-    Log in as a user with the <strong>cygnet-admin</strong> role assigned in the
-    discord channel and go to
-    <a
-      href={"https://" + result.subdomain + ".cyg.network/admin"}
-      target="_blank">{result.subdomain}.cyg.network/admin</a
-    > to create a new voting cycle and customize the instance.
-  </div>
-  <div class="details">
-    <div>Netlify URL: "https://" + result._id + ".netlify.app"</div>
-    <div>discordGuildId: {result.discordGuildId}</div>
-    <div>auth0ClientId: {result.auth0ClientId}</div>
-    <div>netlifySitetId: {result.netlifySiteId}</div>
+  <div class="result">
+    <div class="result-section">
+      🎉 Your Cygnet instance <strong>{result.title}</strong> has been successfully
+      created.
+    </div>
+    <div class="result-section">
+      Within half an hour it will be accessible at this address: <a
+        href={"https://" + result.subdomain + ".cyg.network"}
+        target="_blank">{result.subdomain}.cyg.network</a
+      >
+    </div>
+    <div class="result-section">
+      Log in as a user with the <strong>cygnet-admin</strong> role assigned in
+      the discord guild and go to
+      <a
+        href={"https://" + result.subdomain + ".cyg.network/admin"}
+        target="_blank">{result.subdomain}.cyg.network/admin</a
+      > to create a new voting cycle and customize the instance.
+    </div>
+    <div class="details">
+      <div>Netlify URL: {"https://" + result._id + ".netlify.app"}</div>
+      <div>discordGuildId: {result.discordGuildId}</div>
+      <div>auth0ClientId: {result.auth0ClientId}</div>
+      <div>netlifySitetId: {result.netlifySiteId}</div>
+    </div>
   </div>
 {:else}
   <div class="spawn">
@@ -218,19 +224,28 @@
   }
 
   .details {
-    margin-top: 20px;
-    font-size: 8px;
-    font-family: "Courier New", Courier, monospace;
+    margin-top: 30px;
+    font-size: 12px;
     padding: 10px;
+    background: $foreground-color;
+    color: $background-color;
+  }
+
+  .result {
+    border-top: 1px solid lightgrey;
+    padding-top: 30px;
+
+    a {
+      color: $accent-color;
+    }
   }
 
   .result-section {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   h1,
   .spawn-introduction,
-  .result-section,
   .spawn {
     margin-bottom: 50px;
   }
@@ -276,6 +291,7 @@
     cursor: pointer;
     font-family: $FONT_STACK;
     font-size: 16px;
+    background: transparent;
 
     &:hover {
       background: $accent-color;
@@ -308,5 +324,9 @@
     width: 100%;
     background: rgb(249, 53, 53);
     margin-bottom: 20px;
+  }
+
+  .loading {
+    overflow: hidden;
   }
 </style>

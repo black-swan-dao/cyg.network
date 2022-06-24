@@ -22,7 +22,6 @@ export const post = async (event) => {
     await addRecord(id, body.subdomain)
     console.log('4 __ CNAME record set')
 
-
     // 5. Update instance in sanity
     const finalDoc = await updateInstance(id, netlifySiteId, auth0ClientId)
     console.log('5 __ finalDoc', finalDoc)
