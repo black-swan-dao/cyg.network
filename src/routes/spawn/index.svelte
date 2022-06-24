@@ -115,16 +115,10 @@
 {/if}
 
 {#if loading}
-  LOADING......
+  SPAWNING CYGNET INSTANCE......
 {:else if done}
   <div class="result-section">
     Your Cygnet instance <strong>{result.title}</strong> has been successfully created.
-  </div>
-  <div class="result-section">
-    In a few minutes it will be accessible at this address: <a
-      href={"https://" + result._id + ".netlify.app"}
-      target="_blank">{result._id}.netlify.app</a
-    >
   </div>
   <div class="result-section">
     Within half an hour it will be accessible at this address: <a
@@ -141,6 +135,7 @@
     > to create a new voting cycle and customize the instance.
   </div>
   <div class="details">
+    <div>Netlify URL: "https://" + result._id + ".netlify.app"</div>
     <div>discordGuildId: {result.discordGuildId}</div>
     <div>auth0ClientId: {result.auth0ClientId}</div>
     <div>netlifySitetId: {result.netlifySiteId}</div>
@@ -149,7 +144,7 @@
   <div class="spawn">
     <!-- 1. NAME -->
     <div class="form-section">
-      <label for="name">Name of Cygnet instance:</label>
+      <label for="name">Name of Cygnet instance</label>
       <input
         type="text"
         name="name"
@@ -159,7 +154,7 @@
     </div>
     <!-- 2. SUBDOMAIN -->
     <div class="form-section">
-      <label for="subdomain">Subdomain:</label>
+      <label for="subdomain">Subdomain</label>
       <input
         type="text"
         name="subdomain"
@@ -180,7 +175,10 @@
 
     <!-- DISCORD GUILD ID -->
     <div class="form-section">
-      <label for="name">Discord guild ID:</label>
+      <label for="name"
+        >Discord guild ID (<a href="/guild-id" target="_blank">What is this?</a
+        >)</label
+      >
       <input
         type="text"
         name="guildId"
@@ -207,10 +205,14 @@
     .form-section {
       padding-bottom: 30px;
       margin-bottom: 30px;
-      border-bottom: 1px solid grey;
+      border-bottom: 1px solid lightgrey;
 
       &:last-child {
         border-bottom: unset;
+      }
+
+      a {
+        color: $accent-color;
       }
     }
   }
