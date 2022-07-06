@@ -41,7 +41,7 @@
 </script>
 
 {#if result}
-  {#if result.ok}
+  {#if result._id}
     <p>The bot is installed in your workspace.</p>
   {:else}
     <p>Error: {result.error}</p>
