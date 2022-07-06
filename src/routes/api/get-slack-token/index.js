@@ -28,6 +28,8 @@ export const post = async (event) => {
 
     const res = await response.text()
 
+    console.log(res)
+
     // encrypt token
     // write auth token to sanity
     // response.team.id

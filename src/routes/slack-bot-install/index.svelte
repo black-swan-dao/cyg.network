@@ -19,7 +19,7 @@
       // Send message
       const response = await fetch("/api/get-slack-token", requestOptions)
       const responseData = await response.json()
-      console.log(responseData.ok)
+      console.log(responseData)
       result = responseData
     } catch (e) {
       console.log(e.message)
