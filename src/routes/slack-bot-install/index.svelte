@@ -43,7 +43,6 @@
 {#if result}
   {#if result.ok}
     <p>The bot is installed in your workspace.</p>
-    <p>You can proceed with the cygnet installation process.</p>
   {:else}
     <p>Error: {result.error}</p>
   {/if}
