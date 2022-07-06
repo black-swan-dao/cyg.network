@@ -23,7 +23,7 @@ export const post = async (event) => {
 
     if (res.ok) {
         // encrypt token
-        const simpleCrypto = new SimpleCrypto(import.meta.env.VITE_ENCRYPTION_KEY)
+        const simpleCrypto = new SimpleCrypto(import.meta.env.VITE_ENCRYPTION_SECRET)
         const encryptedToken = simpleCrypto.encrypt(response.access_token)
         console.log('encryptedToken', encryptedToken)
         console.log(simpleCrypto.decrypt(encryptedToken))
