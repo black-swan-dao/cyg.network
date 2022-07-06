@@ -18,39 +18,39 @@ export const post = async (event) => {
         redirect: 'follow'
     })
 
-    const res = await response.text()
+    const res = await response.json()
     console.log(res)
 
-    // if (res.ok) {
-    // encrypt token
-    const simpleCrypto = new SimpleCrypto(import.meta.env.VITE_ENCRYPTION_KEY)
-    const encryptedToken = simpleCrypto.encrypt(response.access_token)
-    console.log('encryptedToken', encryptedToken)
-    console.log(simpleCrypto.decrypt(encryptedToken))
+    if (res.ok) {
+        // encrypt token
+        const simpleCrypto = new SimpleCrypto(import.meta.env.VITE_ENCRYPTION_KEY)
+        const encryptedToken = simpleCrypto.encrypt(response.access_token)
+        console.log('encryptedToken', encryptedToken)
+        console.log(simpleCrypto.decrypt(encryptedToken))
 
-    // Write token to sanity
-    const instance = await loadData("*[_type == 'instance' && slackWorkspaceId == $teamId][0]", { teamId: response.team.id })
-    console.log('instance', instance)
+        // Write token to sanity
+        const instance = await loadData("*[_type == 'instance' && slackWorkspaceId == $teamId][0]", { teamId: response.team.id })
+        console.log('instance', instance)
 
-    if (instance && instance._id) {
-        const updatedInstance = await authorizedClient
-            .patch(instance._id)
-            .set({ slackToken: encryptedToken })
-            .commit()
-        console.log('updatedInstance', updatedInstance)
+        if (instance && instance._id) {
+            const updatedInstance = await authorizedClient
+                .patch(instance._id)
+                .set({ slackToken: encryptedToken })
+                .commit()
+            console.log('updatedInstance', updatedInstance)
+            return {
+                body: updatedInstance
+            };
+        }
+
         return {
-            body: updatedInstance
+            body: res
+        };
+
+    } else {
+        return {
+            body: res
         };
     }
-
-    return {
-        body: res
-    };
-
-    // } else {
-    //     return {
-    //         body: res
-    //     };
-    // }
 
 };
