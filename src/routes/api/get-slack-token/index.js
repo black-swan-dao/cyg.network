@@ -24,12 +24,12 @@ export const post = async (event) => {
     if (res.ok) {
         // encrypt token
         const simpleCrypto = new SimpleCrypto(import.meta.env.VITE_ENCRYPTION_SECRET)
-        const encryptedToken = simpleCrypto.encrypt(response.access_token)
+        const encryptedToken = simpleCrypto.encrypt(res.access_token)
         console.log('encryptedToken', encryptedToken)
         console.log(simpleCrypto.decrypt(encryptedToken))
 
         // Write token to sanity
-        const instance = await loadData("*[_type == 'instance' && slackWorkspaceId == $teamId][0]", { teamId: response.team.id })
+        const instance = await loadData("*[_type == 'instance' && slackWorkspaceId == $teamId][0]", { teamId: res.team.id })
         console.log('instance', instance)
 
         if (instance && instance._id) {
