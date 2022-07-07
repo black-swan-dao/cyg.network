@@ -242,6 +242,7 @@
       <label>Select connection</label>
       <Select
         placeholder="Connection"
+        isClearable={false}
         {items}
         value={items[0]}
         on:select={handleSelect}
@@ -249,7 +250,18 @@
     </div>
 
     {#if connectionType == "discord"}
-      <!-- 4. DISCORD GUILD ID -->
+      <!-- 4. ADD DISCORD BOT -->
+      <div class="form-section">
+        <a
+          href="https://discord.com/oauth2/authorize?client_id=969536726794125332&permissions=268435456&redirect_uri=https%3A%2F%2Fcyg-network.eu.auth0.com%2Flogin%2Fcallback&scope=bot"
+          target="_blank"
+          class="bot"
+        >
+          Add bot to discord guild
+        </a>
+      </div>
+
+      <!-- 5. DISCORD GUILD ID -->
       <div class="form-section">
         <label for="name"
           >Discord guild ID (<a href="/guild-id" target="_blank"
@@ -262,17 +274,6 @@
           bind:value={guildId}
           placeholder="Discord Guild ID"
         />
-      </div>
-
-      <!-- 5. ADD DISCORD BOT -->
-      <div class="form-section">
-        <a
-          href="https://discord.com/oauth2/authorize?client_id=969536726794125332&permissions=268435456&redirect_uri=https%3A%2F%2Fcyg-network.eu.auth0.com%2Flogin%2Fcallback&scope=bot"
-          target="_blank"
-          class="bot"
-        >
-          Add bot to discord guild
-        </a>
       </div>
     {/if}
 
@@ -435,7 +436,9 @@
   }
 
   .themed {
-    --border: 1px solid black;
+    font-size: 12px;
+    max-width: 300px;
+    --border: 1px solid transparent;
     --borderRadius: 0px;
     --placeholderColor: black;
     --background: var(--background-color);
@@ -444,9 +447,5 @@
     --itemHoverBG: rgba(200, 200, 200, 1);
     --listBorderRadius: 0px;
     --itemIsActiveBG: rgba(180, 180, 180, 1);
-    --clearSelectColor: black;
-    --clearSelectFocusColor: black;
-    --clearSelectHoverColor: black;
-    --clearSelectWidth: 15px;
   }
 </style>
