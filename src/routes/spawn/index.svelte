@@ -58,7 +58,7 @@
   const validateGuildId = id => id.length === 18 && /^\d+$/.test(id)
 
   // Should be 11 characters long and start with a T
-  const validateWorkspaceId = id => id.length === 1 && id[0] === "T"
+  const validateWorkspaceId = id => id.length === 11 && id[0] === "T"
 
   const submit = async () => {
     error = false
@@ -91,7 +91,7 @@
     if (connectionType == "slack") {
       if (!validateWorkspaceId(workspaceId)) {
         error =
-          "Workspace ID is not valid. Should be a 1 character string starting with the letter T."
+          "Workspace ID is not valid. Should be a 11 character string starting with the letter T."
         return
       }
     }
@@ -113,7 +113,7 @@
       let bodyObj = {
         title: title,
         subdomain: subdomain,
-        conection: connectionType,
+        connection: connectionType,
       }
 
       if (connectionType == "slack") {
@@ -123,6 +123,8 @@
       if (connectionType == "discord") {
         bodyObj.guildId = guildId
       }
+
+      console.log("bodyObj", bodyObj)
 
       // Set message options
       const requestOptions = {
