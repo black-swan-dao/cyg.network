@@ -28,14 +28,9 @@
   </a>
 </div>
 
-{#if has(page, "faq")}
-  <div class="faq">
-    {#each page.faq as item}
-      <div class="item">
-        <div class="question">{item.question}</div>
-        <div class="answer">{item.answer}</div>
-      </div>
-    {/each}
+{#if has(page, "about.content")}
+  <div class="introduction">
+    {@html renderBlockText(page.about.content)}
   </div>
 {/if}
 

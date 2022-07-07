@@ -1,7 +1,6 @@
 <script>
-  import { urlFor } from "$lib/modules/sanity.js"
+  import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import has from "lodash/has.js"
-
   export let page
 </script>
 
@@ -16,14 +15,9 @@
   </div>
 {/if}
 
-{#if has(page, "faq")}
+{#if has(page, "faq.content")}
   <div class="faq">
-    {#each page.faq as item}
-      <div class="item">
-        <div class="question">{item.question}</div>
-        <div class="answer">{item.answer}</div>
-      </div>
-    {/each}
+    {@html renderBlockText(page.faq.content)}
   </div>
 {/if}
 
