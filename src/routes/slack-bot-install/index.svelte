@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte"
+  import Ticker from "$lib/components/ticker.svelte"
 
   let result = false
 
@@ -47,5 +48,5 @@
     <p>Error: {result.error}</p>
   {/if}
 {:else}
-  <p>Loading...</p>
+  <p>Loading<Ticker /></p>
 {/if}

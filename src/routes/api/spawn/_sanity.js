@@ -9,11 +9,20 @@ export const createNewInstance = body => {
             _id: id,
             title: body.title,
             subdomain: body.subdomain,
-            discordGuildId: body.guildId,
             mainColor: "#0000ff",
             highlightColor: "#41efc8",
-            showEthConnection: false
+            showEthConnection: false,
+            connection: body.connection
         }
+
+        if (body.connection == 'discord') {
+            doc.discordGuildId = body.guildId
+        }
+
+        if (body.connection == 'slack') {
+            doc.slackWorkspaceId = body.slackWorkspaceId
+        }
+
         const result = await authorizedClient.createOrReplace(doc)
         resolve(result._id)
     });
