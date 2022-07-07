@@ -29,7 +29,7 @@ export const post = async (event) => {
         console.log(simpleCrypto.decrypt(encryptedToken))
 
         // Write token to sanity
-        const instance = await loadData("*[_type == 'instance' && slackWorkspaceId == $teamId][0]", { teamId: res.team.id })
+        const instance = await loadData("*[_type == 'instance' && slackWorkspaceId == $teamId] | order(_createdAt desc)[0]", { teamId: res.team.id })
         console.log('instance', instance)
 
         if (instance && instance._id) {
