@@ -96,13 +96,13 @@
       }
     }
 
-    if (connectionType == "discord") {
-      if (!validateGuildId(guildId)) {
-        error =
-          "Guild ID is not valid. Should be a 18 character string of numerals (eg. 889493760197668924)."
-        return
-      }
-    }
+    // if (connectionType == "discord") {
+    //   if (!validateGuildId(guildId)) {
+    //     error =
+    //       "Guild ID is not valid. Should be a 18 character string of numerals (eg. 889493760197668924)."
+    //     return
+    //   }
+    // }
 
     loading = true
 
