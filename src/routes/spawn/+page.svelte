@@ -8,8 +8,6 @@
   export let form: any
   const { page, instances } = data
 
-  $: console.log("form", form)
-
   const items = [
     {
       label: "Discord",
@@ -38,7 +36,6 @@
 
   const validateName = n => {
     const instance = instances.find(i => i.title === n)
-    console.log("instance", instance)
     if (instance) {
       return false
     } else {
@@ -48,7 +45,6 @@
 
   const validateSubdomain = s => {
     const instance = instances.find(i => i.subdomain === s)
-    console.log("instance", instance)
     if (instance) {
       return false
     } else {
@@ -126,7 +122,7 @@
         bodyObj.guildId = guildId
       }
 
-      console.log("bodyObj", bodyObj)
+      // console.log("bodyObj", bodyObj)
 
       // Set message options
       const requestOptions = {
