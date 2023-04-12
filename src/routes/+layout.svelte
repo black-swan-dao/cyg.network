@@ -1,14 +1,13 @@
-<script>
+<script lang="ts">
   import Footer from "$lib/components/footer.svelte"
-  import { fade } from "svelte/transition"
 </script>
 
 <!-- FOREGROUND IMAGE-->
 <div class="foreground-dust-container">
-  <img src="/image/dust.png" />
+  <img src="/images/dust.png" alt="dust" />
 </div>
 
-<main in:fade={{ duration: 200, delay: 200 }}>
+<main>
   <div class="inner">
     <slot />
     <Footer />
@@ -28,6 +27,17 @@
     text-rendering: geometricPrecision;
     font-size: 16px;
     background: $background-color;
+  }
+
+  :global(body) {
+    font-family: $FONT_STACK;
+    text-rendering: geometricPrecision;
+    font-size: 16px;
+    background: $background-color;
+  }
+
+  :global(a) {
+    color: inherit;
   }
 
   main {

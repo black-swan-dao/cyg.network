@@ -1,8 +1,6 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte"
-
   let dots = ""
-
   onMount(async () => {
     window.setInterval(() => {
       dots += "."

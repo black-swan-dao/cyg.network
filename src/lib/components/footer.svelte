@@ -1,4 +1,8 @@
-<footer>
+<script lang="ts">
+  import { fade } from "svelte/transition"
+</script>
+
+<footer in:fade={{ duration: 500, delay: 500 }}>
   <div class="left">
     <a href="https://blackswan.support" target="_blank" class="item">
       Black Swan</a
@@ -22,7 +26,7 @@
   </div>
 
   <div class="right">
-    <a href="/faq" sveltekit:prefetch class="item">FAQ</a>
+    <a href="/faq" data-sveltekit-preload-data class="item">FAQ</a>
   </div>
 </footer>
 

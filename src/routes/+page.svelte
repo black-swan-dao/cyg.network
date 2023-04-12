@@ -1,38 +1,43 @@
-<script>
+<script lang="ts">
+  import { fade } from "svelte/transition"
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import has from "lodash/has.js"
-  export let page
+  export let data: any
+  console.log(data)
+  const { page } = data
 </script>
 
-{#if has(page, "headerImage.asset")}
-  <div class="header-image">
-    <img
-      src={urlFor(page.headerImage.asset).quality(90).width(400).url()}
-      alt="Cygnet"
-    />
-  </div>
-{:else}
-  <h1>Cygnet</h1>
-{/if}
+<div in:fade={{ duration: 500 }}>
+  {#if has(page, "headerImage.asset")}
+    <div class="header-image">
+      <img
+        src={urlFor(page.headerImage.asset).quality(90).width(400).url()}
+        alt="Cygnet"
+      />
+    </div>
+  {:else}
+    <h1>Cygnet</h1>
+  {/if}
 
-{#if has(page, "introduction.content")}
-  <div class="introduction">
-    {@html renderBlockText(page.introduction.content)}
-  </div>
-{/if}
+  {#if has(page, "introduction.content")}
+    <div class="introduction">
+      {@html renderBlockText(page.introduction.content)}
+    </div>
+  {/if}
 
-<!-- <a href="/spawn" sveltekit:prefetch class="spawn">Spawn</a> -->
-<div class="action">
-  <a href={page.requestFormUrl} target="_blank" class="request-access">
-    {page.requestFormText}
-  </a>
+  <!-- <a href="/spawn" sveltekit:prefetch class="spawn">Spawn</a> -->
+  <div class="action">
+    <a href={page.requestFormUrl} target="_blank" class="request-access">
+      {page.requestFormText}
+    </a>
+  </div>
+
+  {#if has(page, "about.content")}
+    <div class="introduction">
+      {@html renderBlockText(page.about.content)}
+    </div>
+  {/if}
 </div>
-
-{#if has(page, "about.content")}
-  <div class="introduction">
-    {@html renderBlockText(page.about.content)}
-  </div>
-{/if}
 
 <style lang="scss">
   @import "src/lib/style/variables.scss";

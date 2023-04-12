@@ -1,12 +1,14 @@
-<script>
+<script lang="ts">
   import { renderBlockText, urlFor } from "$lib/modules/sanity.js"
   import Ticker from "$lib/components/ticker.svelte"
   import has from "lodash/has.js"
   import slugify from "slugify"
   import Select from "svelte-select"
+  export let data: any
+  export let form: any
+  const { page, instances } = data
 
-  export let page
-  export let instances
+  $: console.log("form", form)
 
   const items = [
     {
@@ -130,13 +132,15 @@
       const requestOptions = {
         method: "POST",
         body: JSON.stringify(bodyObj),
-        redirect: "follow",
       }
+
       // Send message
       const response = await fetch("/api/spawn", requestOptions)
+      console.log(response)
       const responseData = await response.json()
       console.log(responseData)
-      result = responseData
+      result = JSON.parse(responseData.data)
+      console.log(result)
       loading = false
       done = true
     } catch (e) {
@@ -147,7 +151,7 @@
 
 {#if has(page, "headerImage.asset")}
   <div class="header-image">
-    <a href="/" sveltekit:prefetch>
+    <a href="/" data-sveltekit-preload-data>
       <img
         src={urlFor(page.headerImage.asset).quality(90).width(400).url()}
         alt="Cygnet"
@@ -192,19 +196,18 @@
 
     <div class="result-section">
       Within half an hour it will be accessible at this address: <a
-        href={"https://" + result.subdomain + ".cyg.network"}
-        target="_blank">{result.subdomain}.cyg.network</a
+        href={"https://" + subdomain + ".cyg.network"}
+        target="_blank">{subdomain}.cyg.network</a
       >
     </div>
     <div class="result-section">
       Log in as a user with the <strong>cygnet-admin</strong> role assigned in
       the discord guild and go to
-      <a
-        href={"https://" + result.subdomain + ".cyg.network/admin"}
-        target="_blank">{result.subdomain}.cyg.network/admin</a
+      <a href={"https://" + subdomain + ".cyg.network/admin"} target="_blank"
+        >{subdomain}.cyg.network/admin</a
       > to create a new voting cycle and customize the instance.
     </div>
-    <div class="details">
+    <!-- <div class="details">
       <div>Netlify URL: {"https://" + result._id + ".netlify.app"}</div>
       {#if result.discordGuildId}
         <div>discordGuildId: {result.discordGuildId}</div>
@@ -214,7 +217,7 @@
       {/if}
       <div>auth0ClientId: {result.auth0ClientId}</div>
       <div>netlifySitetId: {result.netlifySiteId}</div>
-    </div>
+    </div> -->
   </div>
 {:else}
   <div class="spawn">
@@ -437,7 +440,7 @@
     overflow: hidden;
   }
 
-  .themed {
+  :global(.themed) {
     font-size: 12px;
     max-width: 300px;
     --border: 1px solid transparent;

@@ -1,6 +1,6 @@
 <div class="menubar">
-  <a href="/" sveltekit:prefetch>
-    <img src="/image/coin-small.png" alt="cygnet" />
+  <a href="/" data-sveltekit-preload-data>
+    <img src="/images/coin-small.png" alt="cygnet" />
   </a>
 </div>
 

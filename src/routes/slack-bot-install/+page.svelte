@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte"
   import Ticker from "$lib/components/ticker.svelte"
 

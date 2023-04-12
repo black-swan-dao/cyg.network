@@ -1,6 +1,6 @@
 import { ManagementClient } from 'auth0';
 
-export const createAuth0App = (id, subdomain) => {
+export const createAuth0App = (id: string, subdomain: string) => {
     return new Promise(async (resolve, reject) => {
         const auth0 = new ManagementClient({
             domain: import.meta.env.VITE_AUTH0_DOMAIN,

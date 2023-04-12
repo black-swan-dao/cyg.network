@@ -1,9 +1,9 @@
-import sanityClient from '@sanity/client'
+import { createClient } from '@sanity/client'
 
 const SANITY_ID = import.meta.env.VITE_SANITY_ID
 const SANITY_TOKEN = import.meta.env.VITE_SANITY_TOKEN
 
-export const authorizedClient = sanityClient({
+export const authorizedClient = createClient({
     projectId: SANITY_ID,
     dataset: 'production',
     apiVersion: '2022-02-01',

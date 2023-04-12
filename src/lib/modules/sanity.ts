@@ -5,7 +5,7 @@
 //
 // * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-import sanityClient from "@sanity/client"
+import { createClient } from "@sanity/client"
 import blocksToHtml from "@sanity/block-content-to-html"
 import imageUrlBuilder from "@sanity/image-url"
 import get from "lodash/get.js"
@@ -14,7 +14,7 @@ import has from "lodash/has.js"
 const SANITY_PROJECT_ID = import.meta.env.VITE_SANITY_ID
 const SANITY_PROJECT_TOKEN = import.meta.env.VITE_SANITY_TOKEN
 
-export const client = sanityClient({
+export const client = createClient({
     projectId: SANITY_PROJECT_ID,
     dataset: "production",
     apiVersion: '2021-10-05', // use a UTC date string

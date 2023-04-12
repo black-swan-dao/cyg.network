@@ -1,4 +1,4 @@
-export const addRecord = (id, subdomain) => {
+export const addRecord = (id: string, subdomain: string) => {
     return new Promise(async (resolve, reject) => {
         const url = "https://api.godaddy.com/v1/domains/cyg.network/records/"
         const authString = "sso-key " + import.meta.env.VITE_GODADDY_KEY + ":" + import.meta.env.VITE_GODADDY_SECRET
@@ -16,6 +16,7 @@ export const addRecord = (id, subdomain) => {
             body: body
         };
         const response = await fetch(url, options)
-        resolve()
+        console.log(response)
+        resolve(response)
     });
 }
